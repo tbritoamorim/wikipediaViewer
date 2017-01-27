@@ -1,0 +1,121 @@
+$lightMossGreen: #A8D4AD
+$pewterBlue: #AFCCCF
+$beaver: #967D69
+$pastelYellow: #F2F79E
+$boogerBuster: #E8E667
+$darkMidnightBlue: #F95738
+//preprocessors
+=column($count, $gap)
+  -webkit-column-count: $count
+  -webkit-column-gap: $gap
+  -moz-column-count: $count
+  -moz-column-gap: $gap
+  column-count: $count
+  column-gap: $gap
+
+=keyframes($name)
+  @-webkit-keyframes #{$name}
+    @content
+
+  @-moz-keyframes #{$name}
+    @content
+
+  @keyframes #{$name}
+    @content
+
+=animate($name, $duration, $timing-function, $iteration)
+  -webkit-animation: $name $duration $timing-function $iteration
+  -moz-animation: $name $duration $timing-function $iteration
+  animation: $name $duration $timing-function $iteration
+
+//keyframes
++keyframes(top)
+  0%
+    transform: translateY(300%)
+    font-size: 4em
+  100%
+    transform: translateY(-10%)
+    font-size: 2.5em
+//animations
+=shrinkUp
+  +animate(top, 0.7s, cubic-bezier(0.4, 0.59, 0.57, 1), 1)
+
+body
+  background-color: $pastelYellow
+  margin-bottom: 20px
+
+.title
+  font-family: 'Cardo', serif
+  font-size: 4em
+  transform: translateY(300%)
+  margin-bottom: 40px
+  color: $beaver
+
+.input-group-lg>.form-control
+  border: 2px solid #337ab7
+
+.searchbar
+  display: flex
+  width: 100%
+  justify-content: center
+  align-items: center
+  transform: translateY(500%)
+  margin-bottom: 10px
+
+#randomSearch
+  & a
+    color: white
+
+input
+  width: 100%
+
+.resultsList
+  +column(3, normal)
+  max-height: 100%
+
+.resultItem
+  border: 3px dotted $beaver
+  margin-top: 15px
+  padding:
+    left: 20px
+    top: 15px
+    bottom: 15px
+  background-color: $pewterBlue
+  &:first-child
+    margin-top: 0
+  &:nth-child(even)
+    background-color: $lightMossGreen
+
+.resultTerm
+  display: inline-block
+  padding:
+    right: 10px
+  & a
+    color: white
+    text-decoration: none
+    font-size: 1.5em
+    &:hover
+      text-decoration: none
+
+.resultDef
+  display: inline-block
+  padding:
+    right: 10px
+
+.titleUp
+  transform: translateY(-10%)
+  font-size: 2.5em
+  +shrinkUp
+
+.searchbarUp
+  transform: translateY(-10%)
+  +shrinkUp
+
+ul
+  list-style-type: none
+  display: block
+  background-color: white
+  border-radius: 5px
+
+.ui-helper-hidden-accessible
+  display: none
