@@ -4,6 +4,7 @@ $beaver: #967D69
 $pastelYellow: #F2F79E
 $boogerBuster: #E8E667
 $darkMidnightBlue: #F95738
+$paleSilver: #C8BFC7
 //preprocessors
 =column($count, $gap)
   -webkit-column-count: $count
@@ -31,36 +32,56 @@ $darkMidnightBlue: #F95738
 //keyframes
 +keyframes(top)
   0%
-    transform: translateY(300%)
+    margin-top: 0
     font-size: 4em
   100%
-    transform: translateY(-10%)
+    margin-top: 20px
     font-size: 2.5em
 //animations
 =shrinkUp
   +animate(top, 0.7s, cubic-bezier(0.4, 0.59, 0.57, 1), 1)
 
+html, body
+  height: 100%
+  margin: 0
+  padding: 0
+
+.container-fluid
+  height: 100%
+  display: table
+  width: 100%
+  padding: 0
+
+.row-fluid
+  height: 100%
+  display: table-cell
+  vertical-align: middle
+
+.centering
+  float: none
+  margin: 0 auto
+
 body
   background-color: $pastelYellow
-  margin-bottom: 20px
+  margin-bottom: 20p
 
 .title
   font-family: 'Cardo', serif
   font-size: 4em
-  transform: translateY(300%)
   margin-bottom: 40px
   color: $beaver
+  resize: vertical
 
 .input-group-lg>.form-control
   border: 2px solid #337ab7
 
 .searchbar
   display: flex
-  width: 100%
-  justify-content: center
+  align-content: center
   align-items: center
-  transform: translateY(500%)
+  width: 100%
   margin-bottom: 10px
+  resize: vertical
 
 #randomSearch
   & a
@@ -70,8 +91,8 @@ input
   width: 100%
 
 .resultsList
-  +column(3, normal)
-  max-height: 100%
+  +column(2, normal)
+  margin-bottom: 15px
 
 .resultItem
   border: 3px dotted $beaver
@@ -81,34 +102,38 @@ input
     top: 15px
     bottom: 15px
   background-color: $pewterBlue
+  &:hover
+    background-color: $paleSilver
+    color: black
   &:first-child
+    margin-top: 0
+  &:nth-child(6)
     margin-top: 0
   &:nth-child(even)
     background-color: $lightMossGreen
+    &:hover
+      background-color: $paleSilver
+      color: black
 
-.resultTerm
+p.resultTerm
+  color: white
+  font-size: 1.5em
   display: inline-block
   padding:
     right: 10px
-  & a
-    color: white
-    text-decoration: none
-    font-size: 1.5em
-    &:hover
-      text-decoration: none
 
-.resultDef
+p.resultDef
+  color: black
   display: inline-block
   padding:
     right: 10px
 
 .titleUp
-  transform: translateY(-10%)
+  margin-top: 20px
   font-size: 2.5em
   +shrinkUp
 
 .searchbarUp
-  transform: translateY(-10%)
   +shrinkUp
 
 ul
@@ -119,3 +144,24 @@ ul
 
 .ui-helper-hidden-accessible
   display: none
+
+@media screen and (min-width: 320px) and (max-width: 1000px)
+
+  .resultsList
+    -webkit-column-count: 1 !important
+    -webkit-column-gap: normal !important
+    -moz-column-count: 1 !important
+    -moz-column-gap: normal !important
+    column-count: 1 !important
+    column-gap: normal !important
+
+  .resultItem
+    margin: 10px !important
+
+  .searchbar
+    width: 90%
+
+  .input-group-lg>.input-group-btn>.btn
+    font-size: 14px
+    padding: 0 10px
+    white-space: normal
