@@ -38,10 +38,30 @@ $(document).ready(function() {
     success: function (x) {
       results = x;
       console.log(results[1].length);
+      if (results[1].length == 1) {
+        $(".resultsList").css({
+        "-webkit-column-count": "1",
+        "-webkit-column-gap": "normal",
+        "-moz-column-count": "1",
+        "-moz-column-gap": "normal",
+        "column-count": "1",
+        "column-gap": "normal"
+        });
+      } else if (results[1].length >= 2) {
+        $(".resultsList").css({
+        "-webkit-column-count": "2",
+        "-webkit-column-gap": "normal",
+        "-moz-column-count": "2",
+        "-moz-column-gap": "normal",
+        "column-count": "2",
+        "column-gap": "normal"
+        });
+      }
       for (i = 0; i < results[1].length; i++) {
         resultUrl = results[3][i];
-        resultTerm = "<div class='resultItem'><p class='resultTerm'>" + "<a target='_black' href='" + resultUrl + "'>" + results[1][i] + "</a></p>" + "<p class='resultDef'>" + results[2][i] + "</p></div>";
+        resultTerm = "<div class='resultItem'><a target='_blank' href='" + resultUrl + "'>" + "<p class='resultTerm'>" + results[1][i] + "</p>" + "<p class='resultDef'>" + results[2][i] + "</p></a></div>";
         $(resultTerm).appendTo(".resultsList");
+
       }
     }
     });
