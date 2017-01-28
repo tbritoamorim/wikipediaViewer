@@ -41,7 +41,7 @@ html, body {
 
 body {
   background-color: #F2F79E;
-  margin-bottom: 20p; }
+  margin-bottom: 20px; }
 
 .title {
   font-family: "Cardo", serif;
@@ -141,7 +141,8 @@ ul {
     margin: 10px !important; }
 
   .searchbar {
-    width: 90%; }
+    width: 90%;
+    margin-left: 1px; }
 
   .input-group-lg > .input-group-btn > .btn {
     font-size: 14px;
